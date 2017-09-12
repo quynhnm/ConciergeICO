@@ -76,29 +76,29 @@ Type this:
 ```
 
 
-Let's buy some CEC tokens.
+Let's buy some CC1 tokens.
 
 ```javascript
 > truffle console
 ```
 
-Then setup an account that will buy CEC tokens:
+Then setup an account that will buy CC1 tokens:
 *Please remove .DS_Store in build/contracts folder*
 
 ```javascript
 > account1 = web3.eth.accounts[1]
-// The address of the CEC token instance that was created when the crowdsale contract was deployed
+// The address of the CC1 token instance that was created when the crowdsale contract was deployed
 > ConciergeCoinCrowdsale.deployed().then(inst => { crowdsale = inst })
 > crowdsale.token().then(addr => { tokenAddress = addr })
 > conciergeCoinInstance = ConciergeCoin.at(tokenAddress)
 > conciergeCoinInstance.balanceOf(account1).then(balance => balance.toString(10))
-// Buying CEC tokens
+// Buying CC1 tokens
 > web3.personal.unlockAccount(account1, "123456")
 > crowdsale.sendTransaction({ from: account1, value: web3.toWei(10, "ether")})
 
-// // Check the amount of CEC tokens for account1 again. It should have some now.
-> conciergeCoinInstance.balanceOf(account1).then(balance => account1CECTokenBalance = balance.toString(10))
+// // Check the amount of CC1 tokens for account1 again. It should have some now.
+> conciergeCoinInstance.balanceOf(account1).then(balance => account1CC1TokenBalance = balance.toString(10))
 
 // When we created our token we made it with 18 decimals, which the same as what ether has. That's a lot of zeros, let's display without the decimals:
-> web3.fromWei(account1CECTokenBalance, "ether")
+> web3.fromWei(account1CC1TokenBalance, "ether")
 ```
