@@ -1,4 +1,4 @@
-# Ethereum Bootstrap
+# Concierge Coin
 
 Through the methods described in this article and the script, we can quickly build our own private chain for development testing.
 
