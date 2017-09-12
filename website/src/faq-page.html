@@ -1,0 +1,115 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="faq-page">
+  <template>
+    <style include="iron-flex iron-flex-alignment  common-layout-style">
+    :host {
+      background-color: white;
+      @apply(--layout-vertical);
+    }
+    
+    .masthead {
+      background: linear-gradient(rgba(48, 48, 48, .5), rgba(48, 48, 48, .7)), url(/src/images/faq-masthead.jpg), #303030;
+      background-size: cover;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .faq {
+      background-color: white;
+      width: 100%;
+      padding: 24px;
+    }
+    
+    .q {
+      /*color: #2979ff;*/
+      color: #29b6f6;
+      font-weight: 600;
+      padding: 0 16px 0 16px;
+      font-size: 20px;
+    }
+    
+    .a {
+      padding: 16px;
+      color: var(--primary-text-color);
+    }
+    
+    .section iron-icon {
+      color: var(--disabled-text-color);
+      width: 48px;
+    }
+    </style>
+    <div>
+      <!--data loading -->
+      <iron-ajax url="src/data/{{language}}/faqs.json" auto last-response="{{faqs}}"></iron-ajax>
+      <inpage-section class="masthead">
+        <div class="container">
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="spacer3 hide-on-small"></div>
+          <div class="spacer3 hide-on-small"></div>
+          <div class="page-title">常见问题</div>
+          <div class="spacer3 hide-on-small"></div>
+          <div class="spacer3"></div>
+        </div>
+      </inpage-section>
+      <inpage-section>
+        <div class="container">
+          <div class="spacer"></div>
+          <div class="lable">
+            <iron-icon icon="question-answer"></iron-icon>
+            <h2>FAQ</h2>
+          </div>
+          <div class="spacer3 hide-on-small"></div>
+        </div>
+      </inpage-section>
+      <template is="dom-repeat" items={{faqs}} as=faq index-as=index>
+        <inpage-section class="section">
+          <div class="container">
+            <div class="spacer2"></div>
+            <div class="container--inner horizontal start layout">
+              <iron-icon icon="image:navigate-next"></iron-icon>
+              <div class="vertical layout flex">
+                <div class="q self-start">[[faq.q]]</div>
+                <div class="a self-start">[[faq.a]]</div>
+              </div>
+            </div>
+            <div class="spacer"></div>
+          </div>
+        </inpage-section>
+      </template>
+    </div>
+    <inpage-section>
+      <div class="container hide-on-small">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+      </div>
+    </inpage-section>
+  </template>
+  <script>
+  Polymer({
+    is: 'faq-page',
+    properties: {
+      language: {
+        type: String
+      }
+      // section: {
+      //   type: String
+      // },
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

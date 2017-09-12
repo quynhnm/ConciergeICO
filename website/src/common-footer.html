@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="common-footer">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+    :host {
+      display: block;
+      background-color: #29b6f6;
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+      min-height: 64px;
+    }
+    
+    @media (min-width: 1200px) {
+      :host {
+        @apply(--layout-horizontal);
+      }
+    }
+    </style>
+    {{locales.footer.copyright}}
+  </template>
+  <script>
+  Polymer({
+    is: 'common-footer',
+    properties: {
+      locales: Object
+    }
+  });
+  </script>
+</dom-module>

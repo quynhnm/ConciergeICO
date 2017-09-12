@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="inpage-section">
+  <template>
+    <style include="iron-flex iron-flex-alignment app-grid-style">
+    /*<style>*/
+    
+    :host {
+      display: block;
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      /*border: dashed 1px red;*/
+      /*padding: 8px;*/
+    }
+    
+    .content {
+      width: 100%;
+      /*padding: 16px;*/
+      /*background-color: blue;*/
+      /*border: dashed 1px yellow;*/
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .content {
+        width: 1200px;
+      }
+    }
+    </style>
+    <div class="content vertical center center-justified layout">
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+  Polymer({
+    is: 'inpage-section',
+    properties: {
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      // section: {
+      //   type: String
+      // },
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

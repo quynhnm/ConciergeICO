@@ -1,0 +1,92 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="social-bar">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+    :host {
+      display: block;
+      background-color: #29b6f6;
+     @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+      min-height: 64px;
+    }
+
+     .wrapper {
+        margin: 0 8px 0 8px;
+      }
+    
+    @media (min-width: 1200px) {
+    
+      .wrapper {
+        margin: 16px 32px 0 32px;
+      }
+    }
+    
+    .wrapper {
+      display: block;
+      /*background-color: white;*/
+    }
+    
+    .icon {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+    }
+    
+    .github {
+      background-image: url(/src/images/social/github.svg);
+    }
+    
+    .twitter {
+      background-image: url(/src/images/social/twitter.svg);
+    }
+    
+    .slack {
+      background-image: url(/src/images/social/slack.png);
+    }
+    
+    .email {
+      background-image: url(/src/images/social/email.png);
+    }
+    
+    .medium {
+      background-image: url(/src/images/social/medium.png);
+    }
+    </style>
+    <a href="https://github.com/loopring" class="wrapper">
+      <div class="github icon"></div>
+    </a>
+    <a href="https://loopring-team.slack.com/home" class="wrapper">
+      <div class="slack icon"></div>
+    </a>
+    <a href="https://twitter.com/loopringorg" class="wrapper">
+      <div class="twitter icon"></div>
+    </a>
+    <a href="mailto:foundation@loopring.org" class="wrapper">
+      <div class="email icon"></div>
+    </a>
+    <a href="https://medium.com/@loopring" class="wrapper">
+      <div class="medium icon"></div>
+    </a>
+  </template>
+  <script>
+  Polymer({
+    is: 'social-bar',
+    properties: {
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      // section: {
+      //   type: String
+      // },
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

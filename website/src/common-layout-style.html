@@ -1,0 +1,123 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="common-layout-style">
+  <template>
+    <style>
+    :host {}
+    /*-----------------*/
+    
+    .page-title {
+      padding-right: 200px;
+      letter-spacing: 0.5em;
+      font-size: 36px;
+      padding-left: 36px;
+    }
+    
+    .container {
+      width: 100%;
+      @apply(--layout-vertical);
+      /*background-color: black;*/
+    }
+    
+    .spacer {
+      height: 24px;
+    }
+    
+    .spacer2 {
+      height: 48px;
+    }
+    
+    .spacer3 {
+      height: 72px;
+    }
+    
+    .lable {
+      padding-left: 24px;
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+    }
+    
+    .lable iron-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 24px;
+    }
+    
+    .lable h2 {
+      font-weight: 400;
+      @apply(--layout-flex);
+      margin-bottom:0;
+      margin-top:0;
+      opacity: 0.7;
+    }
+
+    .lable small {
+      opacity: 0.5;
+    }
+    
+    .container--inner {
+      /*@apply(--layout-vertical);*/
+      @apply(--layout-center);
+    }
+    
+    .block {
+      display: block;
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+      /*@apply(--layout-center-center);*/
+      padding: 24px;
+      min-height: 352px;
+      line-height: 28px;
+    }
+    
+    .hide-on-small {
+      display: none;
+    }
+    
+    .show-on-small {
+      display: block;
+    }
+    
+    .block-2 {
+      display: block;
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+      /*@apply(--layout-center-center);*/
+      min-height: 100%;
+    }
+    
+    .block--inner--v {
+      display: block;
+      @apply(--layout-vertical);
+    }
+    
+    .block--inner--h {
+      display: block;
+      @apply(--layout-horizontal);
+    }
+    
+    @media (min-width: 1200px) {
+      .page-title {
+        padding-right: 200px;
+        letter-spacing: 0.5em;
+        font-size: 64px;
+        padding-left: 128px;
+      }
+      .lable {
+        padding-left: 0;
+      }
+      .block-2 {
+        min-height: 200px;
+      }
+      .hide-on-small {
+        display: inherit;
+      }
+      .show-on-small {
+        display: none;
+      }
+      .container--inner {
+        @apply(--layout-horizontal);
+      }
+    }
+    </style>
+  </template>
+</dom-module>

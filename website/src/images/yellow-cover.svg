@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3410 134">
+  <defs>
+    <style>
+    .cls-1 {
+      fill: #fff;
+    }
+    
+    .cls-2 {
+      fill: #ffff00;
+    }
+    </style>
+  </defs>
+  <title>border</title>
+  <g id="图层_2" data-name="图层 2">
+    <g id="图层_1-2" data-name="图层 1">
+      <polygon class="cls-1" points="3410 0 0 134 3410 134 3410 0" />
+      <polygon class="cls-2" points="3410 66 0 134 3410 0 3410 66" />
+    </g>
+  </g>
+</svg>

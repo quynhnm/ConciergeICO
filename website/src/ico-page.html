@@ -1,0 +1,210 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="ico-page">
+  <template>
+    <style include="iron-flex iron-flex-alignment  common-layout-style prism-theme-default">
+    :host {
+      display: block;
+      @apply(--layout-vertical);
+    }
+    
+    .masthead {
+      /*background: url(/src/images/gallery2.svg) no-repeat, #303030;*/
+      background: linear-gradient(rgba(48, 48, 48, .5), rgba(48, 48, 48, .7)), url(/src/images/ico-masthead.jpg), #303030;
+      background-size: cover;
+      color: var(--text-primary-color);
+      background-position: bottom right;
+      font-size: 64px;
+    }
+    
+    .about {
+      background-color: #eee;
+    }
+    
+    .timeline {
+      /*background-color: #2979ff;*/
+      padding: 0;
+    }
+    
+    .rules {
+      background-color: #303030;
+      color: white;
+    }
+    
+    .smart-contract {
+      background-color: #eee;
+    }
+    
+    #output {
+      height: 260px;
+      border-radius: 10px;
+      background-color: #303030;
+      color: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      overflow: scroll;
+      text-wrap: normal;
+      /*border-top: dashed var(--divider-color) 1px;*/
+      padding-top: 32px;
+      font-size: 14px;
+    }
+    
+    .rules li {
+      line-height: 32px;
+    }
+    
+    .ico-time {
+      color: #2979ff;
+      font-weight: 700;
+      font-size: 40px;
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      #output {
+        width: 100%;
+        height: 80vh;
+        overflow: scroll;
+        padding: 0 24px 0 24px;
+      }
+      .rules {
+        min-height: 80vh;
+      }
+    }
+    </style>
+    <inpage-section class="masthead">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="page-title">{{locales.ico.title}}</div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="about">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="info-outline"></iron-icon>
+          <h2>{{locales.ico.about}}</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical layout ">
+          <template is="dom-repeat" items={{locales.ico.about_text}} as=line>
+            <p>[[line]]</p>
+          </template>
+          <div>
+            <h1 class="ico-time">2017/08/01 ⟷ 2017/08/30</h1>
+          </div>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="timeline">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="timeline"></iron-icon>
+          <h2>{{locales.ico.timeline}}</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <template is="dom-if" if={{isChinese}}>
+            <timeline-zh></timeline-zh>
+          </template>
+          <template is="dom-if" if={{!isChinese}}>
+            <timeline-en></timeline-en>
+          </template>
+        </div>
+        <div class="spacer2"></div>
+        <div class="spacer2"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="rules">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="gavel"></iron-icon>
+          <h2>{{locales.ico.rules}}</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <ul>
+            <template is="dom-repeat" items={{locales.rule_set}} as=item>
+              <li>[[item]]</li>
+            </template>
+          </ul>
+        </div>
+        <div class="spacer2"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="smart-contract">
+      <prism-highlighter></prism-highlighter>
+      <iron-ajax url="https://raw.githubusercontent.com/Loopring/ico/master/contracts/LoopringToken.sol" auto handle-as="text" last-response="{{code}}"></iron-ajax>
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="code"></iron-icon>
+          <h2>{{locales.ico.code}}</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <pre id="output"></pre>
+          <p>{{locales.ico.code_on_github}}<a href="https://github.com/Loopring/ico">https://github.com/Loopring/ico</a></p>
+        </div>
+        <div class="spacer2"></div>
+        <div class="spacer2"></div>
+      </div>
+    </inpage-section>
+  </template>
+  <script>
+  Polymer({
+    is: 'ico-page',
+    properties: {
+      icosettings: Object,
+      language: {
+        type: String
+      },
+      code: {
+        type: String,
+        observer: '_render'
+      }
+    },
+    isChinese: function() {
+      return this.language === 'zh';
+    },
+    notChinese: function() {
+      return this.language !== 'zh';
+    },
+    _render: function() {
+      this.$.output.innerHTML = this._highlight(this.code);
+    },
+    _highlight: function(code) {
+      return this.fire('syntax-highlight', {
+        code: code,
+        lang: "JavaScript"
+      }).detail.code;
+    }
+
+    // item: {
+    //   type: Object,
+    //   observer: '_itemChanged'
+    // },
+    // section: {
+    //   type: String
+    // },
+    // relatedItems: {
+    //   type: Array
+    // }
+
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

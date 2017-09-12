@@ -1,0 +1,88 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<dom-module id="blog-page">
+  <template>
+    <style include="app-grid-style">
+    :host {
+      display: block;
+      background-color: var(--google-blue-300);
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      @apply(--layout-vertical);
+      min-height: 100vh;
+    }
+    
+    .masthead {
+      background: url(/src/images/yellow-cover.svg), /*layer*/
+      linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
+      url(/src/images/sample2.jpg);
+      background-size: cover;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .title {
+      padding-top: 100px;
+      padding-right: 200px;
+    }
+    
+    .blog {
+      padding: 100px;
+      background: white;
+    }
+    
+    .markdown {
+      background: lightgrey;
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .title {
+        padding-top: 200px;
+        padding-right: 300px;
+      }
+    }
+    </style>
+    <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/{{language}}/entries.json" auto last-response="{{entries}}"></iron-ajax>
+    <inpage-section class="masthead">
+      <div class="title">博客</div>
+    </inpage-section>
+    <div class="container vertical layout">
+      <template is="dom-repeat" items={{entries}} as=entry index-as=index>
+        <div class="blog">
+          <div class="title">{{entry.title}}</div>
+          <div class="date">{{entry.date}}</div>
+          <marked-element>
+            <div class="markdown" slot="markdown-html"></div>
+            <script type="text/markdown" src="//raw.githubusercontent.com/Loopring/blogs/master/{{language}}/{{entry.markdown}}"></script>
+          </marked-element>
+        </div>
+      </template>
+    </div>
+  </template>
+  <script>
+  Polymer({
+    is: 'blog-page',
+    properties: {
+      language: {
+        type: String
+      }
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      // section: {
+      //   type: String
+      // },
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,336 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="team-page">
+  <template>
+    <style include="iron-flex iron-flex-alignment  common-layout-style">
+    :host {
+      display: block;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    .masthead {
+      background: linear-gradient(rgba(48, 48, 48, .5), rgba(48, 48, 48, .7)), url(/src/images/team-masthead.jpg), #303030;
+      background-size: cover;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .core-members-1 {
+      background-color: white;
+      /*@apply(--layout-center-center);*/
+    }
+    
+    .contributors-1,
+    .core-members-2 {
+      background-color: #eee;
+      /*@apply(--layout-center-center);*/
+    }
+    
+    small {
+      display: block;
+      /*color: rgba(0, 0, 0, 0.7);*/
+      opacity: 0.7;
+    }
+    
+    .desc {
+      opacity: 0.7;
+      max-width: 360px;
+    }
+    
+    .core-members-1 .block,
+    .core-members-2 .block {
+      background-color: white;
+      @apply(--layout-center);
+      min-height: 520px;
+    }
+    
+    .contributors-2,
+    .advisors-1,
+    .advisors-2 {
+      background-color: #212121;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .advisors-1 .block,
+    .advisors-2 .block {
+      background-color: #303030;
+      @apply(--layout-center);
+      min-height: 520px;
+    }
+    
+    .advisors-1 iron-image,
+    .advisors-2 iron-image,
+    .core-members-1 iron-image,
+    .core-members-2 iron-image {
+      width: 352px;
+      height: 352px;
+    }
+    
+    .secondary-wrapper {
+      padding: 16px;
+    }
+    
+    .secondary-wrapper .name {
+      /*min-width: 55px;*/
+      /*display: inline-block;*/
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .secondary-wrapper {
+        padding: 0;
+      }
+      .core-members-1 {
+        background-color: #eee;
+      }
+    }
+    </style>
+    <!-- <iron-ajax url="src/data/{{language}}/team.json" auto last-response="{{team}}"></iron-ajax> -->
+    <inpage-section class="masthead">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="page-title">团队</div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="core-members-1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="social:group"></iron-icon>
+          <h2>核心团队</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block core-member--4">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/src/images/team/dan-wang.jpg" preload sizing="cover"></iron-image>
+              <h2>王东</h2>
+              <small> > 基金会主席 / daniel@loopring.org</small>
+              <small>前Google美国Tech Lead、京东高级研发总监、币丰港交易所和币丰支付联合创始人、众安科技高级总监兼区块链技术研究员。</small>
+            </div>
+          </div>
+          <div class="block core-member--5">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/chao-ma.jpg" preload sizing="cover"></iron-image>
+              <h2>马超</h2>
+              <small> > 首席技术官（CTO）/ hoss@loopring.org</small>
+              <small>曾担任Google高级研发工程师，真旅网技术总监，熟悉区块链与虚拟资产交易所技术和生态。</small>
+            </div>
+          </div>
+          <div class="block core-member--6">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/jay-zhou.jpg" preload sizing="cover"></iron-image>
+              <h2>周杰</h2>
+              <small> > 首席市场官（CMO）/ jay@loopring.org</small>
+              <small>曾任职PayPal和Ernst & Young。拥有多年运营和风控工作经验和连续创业经历。一直积极参与比特币和以太坊社区的发展。</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="core-members-2">
+      <div class="container">
+        <!-- <div class="spacer"></div> -->
+        <div class="container--inner">
+          <div class="block core-member--4">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/src/images/team/xiaoliang-chen.jpg" preload sizing="cover"></iron-image>
+              <h2>陈晓亮</h2>
+              <small>> 首席运营官（COO）/ xiaoliang@loopring.org</small>
+              <small>曾任三诺集团首席信息官（CIO），资深金融产品运营专家。</small>
+            </div>
+          </div>
+          <div class="block core-member--5">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/alex-wang.jpg" preload sizing="cover"></iron-image>
+              <h2>王辉</h2>
+              <small> > 架构师 - 环路撮合引擎 / alex@loopring.org</small>
+              <small>复旦大学计算机博士，擅长数据安全，密码学，机器学习和多方计算。曾发表多篇学术论文于国际刊物和会议。</small>
+            </div>
+          </div>
+          <div class="block core-member--6">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/kongliang-zhong.jpg" preload sizing="cover"></iron-image>
+              <h2>钟孔亮</h2>
+              <small> > 架构师 - 智能合约 / kongliang@loopring.org</small>
+              <small>曾任中国银行，银联资深工程师，宜信高级架构师。参与过虚拟币交易所初创公司的创业。</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="contributors-1">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="lable self-center vertical layout">
+          <h2>团队成员和社区参与者</h2>
+          <small>以下排名不分先后，以姓名首字母排序</small>
+        </div>
+        <div class="spacer"></div>
+        <div class="secondary-wrapper vertical wrap center center-justified layout">
+          <div>
+            <div class="secondary-member">
+              <span class="name">Joe Mikhail</span> - <span class="desc">研发工程师 / 谷歌搜索与基础架构团队研发工程师。</span></div>
+            <div class="secondary-member">
+              <span class="name">Leon Wang</span> - <span class="desc">研发工程师 / 谷歌中国早期员工，在硅谷总部供职多年，先后担任手机地图负责人，谷歌地图搜负责人。</span></div>
+            <div class="secondary-member">
+              <span class="name">Peter DePaulo</span> - <span class="desc">研发工程师 / Studiosunfish 高级工程师</span></div>
+            <div class="secondary-member">
+              <span class="name">Zaid Mahomedy</span> - <span class="desc">社区运营 / Immersive Authority创始人。</span></div>
+              <div class="secondary-member">
+              <span class="name">常书鸿</span> - <span class="desc">高级UI设计师。</span></div>
+            <div class="secondary-member">
+              <span class="name">刘百祥</span> - <span class="desc">复旦大学博士研究生 / 复旦大学信息办运行服务中心副主任，全栈工程师。</span></div>
+            <div class="secondary-member">
+              <span class="name">刘春明</span> - <span class="desc">研发工程师 / 前币丰港交易所合伙人兼首席架构师，美团高级研发总监。</span></div>
+            <div class="secondary-member">
+              <span class="name">李伟超</span> - <span class="desc">前币丰港交易所后台架构师。</span></div>
+            <div class="secondary-member">
+              <span class="name">李小露</span> - <span class="desc">前币丰港交易所后台架构师。</span></div>
+            <div class="secondary-member">
+              <span class="name">文捷</span> - <span class="desc">复旦大学博士研究生 / 主要研究方向为密码学、编码、分布式存储。</span></div>
+            <div class="secondary-member">
+              <span class="name">杨立</span> - <span class="desc">前币丰港交易所后台架构师。</span></div>
+          </div>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="advisors-1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="group-work"></iron-icon>
+          <h2>首席顾问</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block advisor--1">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/src/images/team/xuefeng-li.jpg" preload sizing="cover"></iron-image>
+              <h2>李雪峰</h2>
+              <small> > 众安科技CTO，区块链意见领袖，天使参与人。</small>
+              <small> > 提供交易所落地、政策支持、可行性论证相关咨询。</small>
+            </div>
+          </div>
+          <div class="block advisor--2">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/thomas.jpg" preload sizing="cover"></iron-image>
+              <h2>Thomas Johansson</h2>
+              <small> > 瑞典Lund大学教授计算机教授，国际著名密码学专家，标准加密算法SNOW 3G和Grain设计者。</small>
+              <small> > 提供环路撮合算法相关咨询。</small>
+            </div>
+          </div>
+          <div class="block advisor--3">
+            <div class="block-inner--v">
+              <iron-image src="/src/images/team/xuyiji.jpg" preload sizing="cover"></iron-image>
+              <h2>徐义吉</h2>
+              <small> > 比特币创业营发起人，蚂蚁金服区块链负责人，星云链创始人。​</small>
+              <small> > 提供社区运营、协议跨链实施的相关咨询。</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="contributors-2">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="lable self-center vertical layout">
+          <h2>顾问团队</h2>
+          <small>以下排名不分先后，以姓名首字母排序</small>
+        </div>
+        <div class="spacer  "></div>
+        <div class="secondary-wrapper vertical wrap center center-justified layout">
+          <div>
+            <div class="secondary-member">
+              <span class="name">Alex Cheng</span> -
+              <span class="desc">百度副总裁，百度美国研发中心总经理；前Google美国高级研发总监。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">Simon Zhu</span> -
+              <span class="desc">PayPal亚太运营中心总负责人，Google中国法务业务负责人。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">白硕</span> -
+              <span class="desc">中国分布式总账基础协议联盟（ChinaLedger）技术委员会主任，中国金融标准化技术委员会证券分委员会副主任委员。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">曹晶</span> -
+              <span class="desc">德华资本首席参与官，白石创投创始人，全美华人金融协会理事，Upper90 参与基金合伙人​。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">曹寅</span> -
+              <span class="desc">能源区块链实验室创始合伙人，信达证券首席区块链专家，首席能源互联网研究员。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">初夏虎</span> - <span class="desc">维优元界创始人、区块链和数字资产专家。</span></div>
+            <div class="secondary-member">
+              <span class="name">达鸿飞</span> - <span class="desc">小蚁创始人，Onchain分布科技CEO，中国区块链社区早期成员。</span></div>
+            <div class="secondary-member">
+              <span class="name">段念</span> -
+              <span class="desc">花虾金融CEO，兼华夏信财副总裁。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">郭小虎</span> - <span class="desc">德州大学奥斯丁分校教授，博士生导师。</span></div>
+            <div class="secondary-member">
+              <span class="name">郭一鹏</span> -
+              <span class="desc">北京汇垠天然参与基金管理有限公司董事长。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">巨蟹</span> -
+              <span class="desc">区块链内容创造和分享平台YOYOW项目​联合创始人，比特股理事。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">阚海斌</span>- <span class="desc">复旦大学教授，博士生导师。编码与信息论，密码学与信息安全，计算复杂性领域国家级专家。</span></div>
+            <div class="secondary-member">
+              <span class="name">龙凯</span> - <span class="desc">银联智慧创始人兼总裁。</span></div>
+            <div class="secondary-member">
+              <span class="name">夏华夏</span> - <span class="desc">美团点评科学家​，曾任Goolge美国技术架构师。</span></div>
+            <div class="secondary-member">
+              <span class="name">向江旭</span> - <span class="desc">苏宁云商集团IT总部执行副总裁，负责苏宁云商集团前瞻性技术创新和研究​。</span></div>
+            <div class="secondary-member">
+              <span class="name">肖军</span> - <span class="desc">京东副总裁，京东X事业部总裁​。</span></div>
+            <div class="secondary-member">
+              <span class="name">于伟</span> -
+              <span class="name" class="desc">微软必应研发负责人之一，微软广告系统技术负责人，微软技术合伙人。</span>
+            </div>
+            <div class="secondary-member">
+              <span class="name">张鸣晨</span> - <span class="desc">红点创投副总裁。</span></div>
+          </div>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+  </template>
+  <script>
+  Polymer({
+    is: 'team-page',
+    properties: {
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      language: {
+        type: String
+      }
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

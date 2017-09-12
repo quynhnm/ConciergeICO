@@ -1,0 +1,347 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="home-page">
+  <template>
+    <!-- <style include="iron-flex iron-flex-alignment"> -->
+    <style include="iron-flex iron-flex-alignment common-layout-style">
+    :host {
+      display: block;
+      background-color: white;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      @apply(--layout-vertical);
+      /*min-height: 100vh;*/
+    }
+    
+    .masthead {
+      background: #303030;
+      color: white;
+    }
+    
+    .whitepapers {
+      background-color: #303030;
+      color: white;
+    }
+    
+    .title1 {
+      font-size: 48px
+    }
+    
+    span.highlight {
+      color: #ffc400;
+      text-decoration: underline;
+    }
+    
+    .title2 {
+      font-size: 32px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .feature-set1 {
+      background-color: white;
+    }
+    
+    .feature-set2 {
+      background-color: #eee;
+    }
+    
+    .feature-set1-feature1 {
+      background: url(/src/images/right-bottom-blue.svg), #3c3c3c;
+      background-size: cover;
+      color: white;
+    }
+    
+    .feature-set1-feature2 {
+      background: url(/src/images/gallery.svg);
+      background-size: cover;
+    }
+    
+    .feature-set1-feature3 {
+      background-color: #29b6f6;
+    }
+    
+    .feature-set1-feature4 {
+      background: url(/src/images/gallery2.svg), #212121;
+      background-size: cover;
+    }
+    
+    .feature-set1-feature5 {
+      background-color: white;
+    }
+    
+    .feature-set1-feature6 {
+      background-color: #2979ff;
+      color: white;
+    }
+    
+    .sponsors {
+      background-color: white;
+    }
+    
+    .sponsors .container--inner {
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+      @apply(--layout-around-justified);
+    }
+    
+    .sponsors iron-image {
+      height: 48px;
+      width: 240px;
+    }
+    
+    .whitepaper {
+      min-height: 352px;
+      padding: 24px;
+      @apply(--layout-vertical);
+      @apply(--layout-start);
+      @apply(--layout-flex);
+      line-height: 24px;
+      display: block;
+    }
+    
+    .whitepaper-seperator {
+      width: 64px;
+    }
+    
+    a.paperlink {
+      display: block;
+      width: 100%;
+      padding: 0;
+      text-decoration: none;
+      color: #212121;
+      background-color: grey;
+      height: 64px;
+    }
+    
+    a.paperlink:hover {
+      background-color: #29b6f6;
+    }
+    
+    .file,
+    .icon-wrapper {
+      height: 64px;
+      width: 64px;
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+    }
+    
+    .social-bar {
+      background-color: #ffeb3b;
+    }
+
+    .block.short {
+      min-height: inherit;
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .masthead--child--3 {
+        background: url(/src/images/right-bottom-blue.svg), #3c3c3c;
+        background-size: cover;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .masthead--child--2 {
+        background: url(/src/images/devices.svg)
+      }
+      .sponsors .container--inner {
+        @apply(--layout-horizontal);
+      }
+    }
+    </style>
+    <inpage-section class="masthead">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable vertical start layout">
+          <div class="title1"><span class="highlight">L</span>oopring</div>
+          <div class="title2">新一代虚拟资产交易所</div>
+          <div class="title2">和交易协议</div>
+        </div>
+        <!-- <div class="spacer3"></div> -->
+        <div class="container--inner">
+          <div class="block hide-on-small">
+          </div>
+          <div class="block masthead--child--2 hide-on-small">
+          </div>
+          <div class="block masthead--child--3">
+            <div class="block-inner--v">
+              <p>Loopring是在智能合约共有链上，类ERC20代币间进行交易的，基于智能合约的开放协议。该协议允许多家交易所通过竞争，对公共订单进行链外撮合及链上清结算。</p>
+              <br/>
+              <p>Loopring将彻底解决现有中心化交易所模式的一些固有风险。我们期待Loopring成为去中心化交易所的底层协议和新一代虚拟资产交易所的核心基础架构。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="feature-set1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="star-border"></iron-icon>
+          <h2>新特性</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block feature-set1-feature1">
+            <div class="block-inner--v">
+              <h2>绝对安全</h2>
+              <p>Loopring订单中的卖出代币不必充值到交易所做资金托管，在下单、撮合、清结算过程中一直保存在用户自己区块链的地址中。订单不锁定用户区块链上的代币，下单后用户依然可以任意使用自己的数字代币，余额不足时MTTP自动调整订单的数额且保持价格恒定​。使用Loopring，交易所倒闭跑路都不会对用户有任何影响。</p>
+            </div>
+          </div>
+          <div class="block feature-set1-feature2">
+            <div class="block-inner--v">
+              <h2>环路撮合</h2>
+              <p>Loopring一次撮合可将十几个包含不同类型代币的订单做环路撮合。</p>
+            </div>
+          </div>
+          <div class="block feature-set1-feature3">
+            <div class="block-inner--v">
+              <h2>订单共享</h2>
+              <p>Loopring中一个订单可以被广播给多个交易所，被这些交易所并行撮合。一个订单可被一个交易所撮合成功一部分，被另一个交易所撮合成功另一部分。交易所之间存在竞争关系，因此订单会被更快、更好（价格最优）地撮合。使用Loopring下单，交易不会因交易所被DDOS攻击而无法得到及时撮合。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="feature-set2">
+      <div class="container">
+        <div class="container--inner">
+          <div class="block feature-set1-feature4 hide-on-small">
+            <div class="block-inner--v">
+            </div>
+          </div>
+          <div class="block feature-set1-feature5">
+            <div class="block-inner--v">
+              <h2>去中心化</h2>
+              <p>订单在区块链外生成，传播、撮合；链上清算转账。理论上100%安全，用户资金不会丢失或被盗。</p>
+            </div>
+          </div>
+          <div class="block feature-set1-feature6">
+            <div class="block-inner--v">
+              <h2>跨链协议层</h2>
+              <p>Loopring是个去中心化安全交易的协议层，可在多个智能合约公有链上实现，而不依赖于某个特定平台。我们会在以太坊上率先实现第一个版本，接下来会在EOS，ETC，量子链上部署协议，为这些平台提供代币流动性支持。</p>
+            </div>
+          </div>
+        </div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="whitepapers">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="image:details"></iron-icon>
+          <h2>白皮书</h2>
+        </div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block short">
+            <div class="block-inner--h">
+              <a href="https://github.com/Loopring/whitepaper/raw/master/zh_whitepaper.pdf" class="paperlink">
+                <div class="horizontal center center-justified layout">
+                  <div class="flex file">
+                    <h2>中文版白皮书</h2>
+                  </div>
+                  <div class="icon-wrapper darker">
+                    <iron-icon icon="image:picture-as-pdf"></iron-icon>
+                  </div>
+                  <div class="icon-wrapper">
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="block  short">
+            <div class="block-inner--h">
+              <a href="https://github.com/Loopring/whitepaper/raw/master/en_whitepaper.pdf" class="paperlink">
+                <div class="horizontal center center-justified layout">
+                  <div class="flex file">
+                    <h2>English Whitepaper</h2></div>
+                  <div class="icon-wrapper">
+                    <iron-icon icon="image:picture-as-pdf"></iron-icon>
+                  </div>
+                  <div class="icon-wrapper">
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="block short">
+            <div class="block-inner--h">
+              <a href="https://github.com/Loopring/whitepaper/raw/master/keynote/loopring-technical.pdf" class="paperlink chinese">
+                <div class="horizontal center center-justified layout">
+                  <div class="flex file">
+                    <h2>项目PPT</h2>
+                  </div>
+                  <div class="icon-wrapper darker">
+                    <iron-icon icon="image:picture-as-pdf"></iron-icon>
+                  </div>
+                  <div class="icon-wrapper">
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="sponsors">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="image:hdr-weak"></iron-icon>
+          <h2>合作伙伴</h2>
+        </div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <iron-image sizing="contain" src="/src/images/sponsors/sequoiadb.png"></iron-image>
+          <div class="spacer show-on-small"></div>
+          <iron-image sizing="contain" src="/src/images/sponsors/fbg.jpg"></iron-image>
+          <div class="spacer show-on-small"></div>
+          <iron-image sizing="contain" src="/src/images/sponsors/8btc.svg"></iron-image>
+          <div class="spacer show-on-small"></div>
+          <iron-image sizing="contain" src="/src/images/sponsors/jingtian.gif"></iron-image>
+          <div class="spacer show-on-small"></div>
+          <iron-image sizing="contain" src="/src/images/sponsors/whitestone.png"></iron-image>
+        </div>
+        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+  </template>
+  <script>
+  Polymer({
+    is: 'home-page',
+    isEqual: function(a, b) {
+      if ((a == null && b == null) || (typeof a === "undefined" && typeof b === "undefined")) {
+        return true;
+      }
+
+      // Otherwise just compare
+      return a === b;
+    },
+    properties: {
+      language: {
+        type: String
+      },
+      locales: Object,
+      ico: Object
+        // div: {
+        //   type: String
+        // },
+        // relatedItems: {
+        //   type: Array
+        // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

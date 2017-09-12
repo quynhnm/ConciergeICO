@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint ./",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --host 0.0.0.0 --port 8081",
+    "website": "http-server -a localhost -p 8082 website"
   },
   "author": "Douglas von Kohorn",
   "license": "MIT",

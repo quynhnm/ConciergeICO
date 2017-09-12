@@ -1,0 +1,7 @@
+{
+  "name": "loopring",
+  "short_name": "loopring",
+  "description": "Loopring Website",
+  "start_url": "/",
+  "display": "standalone"
+}
