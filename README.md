@@ -19,7 +19,7 @@ The repository contains the following tools:
 
 ## Start geth
 
-1. Go to this: `cd ethereum-bootstrap`
+1. Go to this: `cd ConciergeICO`
 2. Import test accounts: `./bin/import_keys.sh`
 3. Initialize blockchain: `./bin/private_blockchain_init.sh`
    The output is as follow：
