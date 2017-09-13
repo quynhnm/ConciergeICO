@@ -19,15 +19,16 @@ var ConciergeCoinCrowdsale = contract(conciergecoin_crowdsale_artifacts);
 var accounts;
 var account;
 var conciergeCoinInstance;
+var crowdsale;
 
 window.App = {
   start: function() {
-    var self = this;
-
-    console.log(web3)
+    var self = this;        
 
     // Bootstrap the ConciergeCoin abstraction for Use.
+    // need to setup provider, provider connected to network
     ConciergeCoinCrowdsale.setProvider(web3.currentProvider);
+    ConciergeCoin.setProvider(web3.currentProvider);
 
     // Get the initial account balance so it can be displayed.
     web3.eth.getAccounts(async function(err, accs) {
@@ -44,9 +45,10 @@ window.App = {
       accounts = accs;
       account = accounts[0];      
 
-      var crowdsale = await ConciergeCoinCrowdsale.deployed();
+      crowdsale = await ConciergeCoinCrowdsale.deployed();      
       var tokenAddress = await crowdsale.token();
-      conciergeCoinInstance = ConciergeCoin.at(tokenAddress);                
+      console.log(tokenAddress)
+      conciergeCoinInstance = ConciergeCoin.at(tokenAddress);           
 
     });
   },
@@ -58,11 +60,11 @@ window.App = {
 
   refreshBalance: async function() {
     var self = this;
-    try{
+    try{      
       var receiver = document.getElementById("receiver").value;
-      var balance = conciergeCoinInstance.balanceOf(receiver);        
+      var balance = await conciergeCoinInstance.balanceOf(receiver);              
       var balance_element = document.getElementById("balance");
-      balance_element.innerHTML = balance.toString(10);
+      balance_element.innerHTML = web3.fromWei(balance.toString(10), "ether");
     } catch(e) {
       console.log(e);
       self.setStatus("Error getting balance; see log.");
@@ -77,8 +79,7 @@ window.App = {
 
     this.setStatus("Initiating transaction... (please wait)");
 
-    try{
-      var crowdsale = await ConciergeCoinCrowdsale.deployed();
+    try{      
       web3.personal.unlockAccount(receiver, "123456")
       crowdsale.sendTransaction({ from: receiver, value: web3.toWei(amount, "ether")})      
     
@@ -100,7 +101,7 @@ window.addEventListener('load', function() {
   } else {
     console.warn("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-    window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));    
+    window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));   
   }
 
   App.start();
