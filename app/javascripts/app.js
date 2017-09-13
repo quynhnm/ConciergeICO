@@ -24,6 +24,8 @@ window.App = {
   start: function() {
     var self = this;
 
+    console.log(web3)
+
     // Bootstrap the ConciergeCoin abstraction for Use.
     ConciergeCoinCrowdsale.setProvider(web3.currentProvider);
 
