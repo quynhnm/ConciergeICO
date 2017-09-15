@@ -13,9 +13,18 @@ The repository contains the following tools:
 
 ## Setup
 
-1. In the installation folder of [go-ethereum](https://github.com/ethereum/go-ethereum) and [solc](http://solidity.readthedocs.org/en/latest/), can run `geth`and`solc`
+1. In the installation folder of [go-ethereum](https://github.com/ethereum/go-ethereum) and [solc](http://solidity.readthedocs.org/en/latest/), can run `geth`and`solc` 
+```
+> yum install golang
+> wget wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.7.0-6c6c7b2a.tar.gz
+> tar -zxvf geth-linux-amd64-1.7.0-6c6c7b2a.tar.gz
+> cd geth-linux-amd64-1.7.0-6c6c7b2a.tar.gz
+> cp geth /usr/bin/geth
+```
 2. Using `git clone` to download this repository to local
-3. Install [expect](http://expect.sourceforge.net/)
+3. Install [expect](http://expect.sourceforge.net/) `yum install expect`
+4. For dapp, install nodejs `curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash - && sudo yum -y install nodejs`
+5. For truffle on Centos, make sure to run `yum groupinstall 'Development Tools'`
 
 ## Start geth
 
@@ -27,9 +36,11 @@ The repository contains the following tools:
     I0822 16:28:29.767646 ethdb/database.go:82] Alloted 16MB cache and 16 file handles to data/chaindata
     I0822 16:28:29.773596 cmd/geth/main.go:299] successfully wrote genesis block and/or chain rule set: 19425866b7d3298a15ad79accf302ba9d21859174e7ae99ce552e05f13f0efa3
    ```
-4. To solve the problem account is lock, especially for miners, go with: `bin/private_blockchain.sh -u 3ae88fe370c39384fc16da2c9e768cf5d2495b48`
+4. To solve the problem account is lock, especially for miners, go with: `./bin/private_blockchain_miner.sh -u 3ae88fe370c39384fc16da2c9e768cf5d2495b48 -n enode://5bb10c2e52f7e879835b7a0f2f9b5bf2a3d6c1a53294b564be0ec547e7ce5908cbaee1874d3aa3fe3120402dddab613341885ef62b7caf52e368ab770f0d325c@88.208.245.230:30303`
+Or you can put the enode in data/static-nodes.json
 5. Start the private chain node: `./bin/private_blockchain.sh`. The result is as follow:
   ![private-started.png](screenshots/private-started.png)
+Note: for the first node as static node on server, use nohup to run at background like this `nohup ./bin/private_blockchain_server.sh > blockchain.log 2>&1&`
 6. At this point the etherbox interactive console has been launched, we can start testing and development.
 
 Note: The tool script assumes that your `geth` is installed in the default location and can be passed directly geth. If the geth command is installed in a non-standard location, you can set the `GETH` environment variable to specify the path of the geth executable file. E.g:
@@ -37,8 +48,11 @@ Note: The tool script assumes that your `geth` is installed in the default locat
 `GETH=/some/weird/dir/geth ./bin/import_keys.sh`
 
 ## Publish ether by digging for account
-Setup account for mining
-```
+Setup account for mining, you can ignore this step if use step 3 in **start geth**
+``` javascript
+// for fist node, just run private_blockchain.sh with nohup for background mode
+// after that, we can go console by geth attach http://ip:8545
+// second node, using --bootnodes to connect
 > miner.setEtherbase(eth.accounts[0])
 > personal.unlockAccount(eth.accounts[0], "123456")
 ```
