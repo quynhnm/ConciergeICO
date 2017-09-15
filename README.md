@@ -36,7 +36,7 @@ The repository contains the following tools:
     I0822 16:28:29.767646 ethdb/database.go:82] Alloted 16MB cache and 16 file handles to data/chaindata
     I0822 16:28:29.773596 cmd/geth/main.go:299] successfully wrote genesis block and/or chain rule set: 19425866b7d3298a15ad79accf302ba9d21859174e7ae99ce552e05f13f0efa3
    ```
-4. To solve the problem account is lock, especially for miners, go with: `./bin/private_blockchain_miner.sh -u 3ae88fe370c39384fc16da2c9e768cf5d2495b48 -n enode://5bb10c2e52f7e879835b7a0f2f9b5bf2a3d6c1a53294b564be0ec547e7ce5908cbaee1874d3aa3fe3120402dddab613341885ef62b7caf52e368ab770f0d325c@88.208.245.230:30303`
+4. To solve the problem account is lock, especially for miners, go with: `./bin/private_blockchain_miner.sh -u 0x3ae88fe370c39384fc16da2c9e768cf5d2495b48 -n enode://5bb10c2e52f7e879835b7a0f2f9b5bf2a3d6c1a53294b564be0ec547e7ce5908cbaee1874d3aa3fe3120402dddab613341885ef62b7caf52e368ab770f0d325c@88.208.245.230:30303`
 Or you can put the enode in data/static-nodes.json
 5. Start the private chain node: `./bin/private_blockchain.sh`. The result is as follow:
   ![private-started.png](screenshots/private-started.png)
@@ -54,7 +54,7 @@ Setup account for mining, you can ignore this step if use step 3 in **start geth
 // after that, we can go console by geth attach http://ip:8545
 // second node, using --bootnodes to connect
 > miner.setEtherbase(eth.accounts[0])
-> personal.unlockAccount(eth.accounts[0], "123456")
+> personal.unlockAccount(eth.accounts[0], "123456", 1500)
 ```
 View account balance：
 ```
