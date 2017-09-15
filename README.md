@@ -27,8 +27,7 @@ The repository contains the following tools:
     I0822 16:28:29.767646 ethdb/database.go:82] Alloted 16MB cache and 16 file handles to data/chaindata
     I0822 16:28:29.773596 cmd/geth/main.go:299] successfully wrote genesis block and/or chain rule set: 19425866b7d3298a15ad79accf302ba9d21859174e7ae99ce552e05f13f0efa3
    ```
-4. To solve the problem account is lock, modify the file bin/private_blockchain.sh, add --unlock 0 --password value after geth,
-   where value is the file address of the password you created that contains the password you set in step 2
+4. To solve the problem account is lock, especially for miners, go with: `bin/private_blockchain.sh -u 3ae88fe370c39384fc16da2c9e768cf5d2495b48`
 5. Start the private chain node: `./bin/private_blockchain.sh`. The result is as follow:
   ![private-started.png](screenshots/private-started.png)
 6. At this point the etherbox interactive console has been launched, we can start testing and development.
