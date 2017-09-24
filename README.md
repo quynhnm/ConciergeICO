@@ -76,7 +76,7 @@ true
 ```
 Unlock account to use
 ```
-> personal.unlockAccount(web3.eth.accounts[0])
+> web3.personal.unlockAccount(web3.eth.accounts[0])
 ```
 
 ## Use truffle to compile and deploy smart contracts

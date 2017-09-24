@@ -80,7 +80,7 @@ window.App = {
     this.setStatus("Initiating transaction... (please wait)");
 
     try{      
-      web3.personal.unlockAccount(receiver, "123456")
+      web3.personal.unlockAccount(receiver, "123456", 150000)
       crowdsale.sendTransaction({ from: receiver, value: web3.toWei(amount, "ether")})      
     
       self.setStatus("Transaction complete!");
