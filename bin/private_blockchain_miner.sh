@@ -21,7 +21,7 @@ done
 
 shift $((OPTIND-1))
 
-if [ -z "${u}" ]; then
+if [ -z "${n}" ]; then
     n="--bootnodes enode://5bb10c2e52f7e879835b7a0f2f9b5bf2a3d6c1a53294b564be0ec547e7ce5908cbaee1874d3aa3fe3120402dddab613341885ef62b7caf52e368ab770f0d325c@88.208.245.230:30303"
 fi
 
