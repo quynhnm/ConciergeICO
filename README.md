@@ -47,6 +47,12 @@ Note: The tool script assumes that your `geth` is installed in the default locat
 
 `GETH=/some/weird/dir/geth ./bin/import_keys.sh`
 
+## Start mining on the private blockchain which already has static nodes
+- Install MyEtherWallet chrome extension
+- Create new wallet then download the keystore file
+- Upload keystore file into data/keystore folder
+- Then start mining with the new created account address
+
 ## Publish ether by digging for account
 Setup account for mining, you can ignore this step if use step 3 in **start geth**
 ``` javascript
