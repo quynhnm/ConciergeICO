@@ -47,6 +47,8 @@ Note: The tool script assumes that your `geth` is installed in the default locat
 
 `GETH=/some/weird/dir/geth ./bin/import_keys.sh`
 
+7. If you run Dapps on the remote, you need to change host config in truffle.js to remote address, in case of running mining. If you want to run Dapps on the local server, such as exchanging coin to token, you must go with `private_blockchain_server.sh`
+
 ## Start mining on the private blockchain which already has static nodes
 - Install MyEtherWallet chrome extension
 - Create new wallet then download the keystore file
