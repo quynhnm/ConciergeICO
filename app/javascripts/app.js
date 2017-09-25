@@ -20,6 +20,7 @@ var accounts;
 var account;
 var conciergeCoinInstance;
 var crowdsale;
+var filter;
 
 window.App = {
   start: function() {
@@ -47,10 +48,14 @@ window.App = {
 
       crowdsale = await ConciergeCoinCrowdsale.deployed();      
       var tokenAddress = await crowdsale.token();
-      console.log(tokenAddress)
+      // console.log(tokenAddress)
+      document.getElementById('token').value = tokenAddress
       conciergeCoinInstance = ConciergeCoin.at(tokenAddress);           
 
     });
+
+    filter = web3.eth.filter('latest')
+
   },
 
   setStatus: function(message) {
@@ -75,16 +80,16 @@ window.App = {
     var self = this;
 
     var amount = parseInt(document.getElementById("amount").value);
-    var receiver = document.getElementById("receiver").value;
+    var investor = document.getElementById("receiver").value;
 
     this.setStatus("Initiating transaction... (please wait)");
 
     try{      
-      web3.personal.unlockAccount(receiver, "123456", 150000)
-      crowdsale.sendTransaction({ from: receiver, value: web3.toWei(amount, "ether")})      
-    
-      self.setStatus("Transaction complete!");
-      self.refreshBalance();
+      var password = prompt("Enter passphrase")
+      web3.personal.unlockAccount(investor, password, 150000)
+      await crowdsale.sendTransaction({ from: investor, value: web3.toWei(amount, "ether")})   
+      self.setStatus("Transaction completed!");   
+      self.refreshBalance()                             
     } catch(e) {
       console.log(e);
       self.setStatus("Error sending coin; see log.");
@@ -101,7 +106,8 @@ window.addEventListener('load', function() {
   } else {
     console.warn("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-    var host = '88.208.245.230';//location.hostname || 'localhost';
+    var host = location.hostname || 'localhost';
+    // var host = '88.208.245.230';
     window.web3 = new Web3(new Web3.providers.HttpProvider("http://"+host+":8545"));   
   }
 
